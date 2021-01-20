@@ -142,9 +142,9 @@ public final class SwiftBcTest {
 
         InOrder inOrder = inOrder(stub);
         inOrder.verify(stub).putStringState("paymentOrder1",
-                "{ \"swiftCode\": \"paymentOrder1\", \"date\": \"20210121\", \"amount\": \"70000\" , \"currency\": \"KRW\", \"ordererName\": \"테스트1\", \"ordererAddress\": \"서울어딘가\", \"ordererId\": \"orderer1\", \"receiverAccount\": \"010101010101\", \"receiverName\": \"receiver1\", \"receiverAddress\": \"미국어딘가\", \"remittanceInformation\": \"원화를 보낸다\", \"additionalInstruction\": \"재주껏 바꿔써라\", \"chargeDetail\": \"1\" }");
+                "{ \"swiftCode\": \"paymentOrder1\", \"date\": \"20210121\", \"amount\": \"70000\", \"currency\": \"KRW\", \"ordererName\": \"테스트1\", \"ordererAddress\": \"서울어딘가\", \"ordererId\": \"orderer1\", \"receiverAccount\": \"010101010101\", \"receiverName\": \"receiver1\", \"receiverAddress\": \"미국어딘가\", \"remittanceInformation\": \"원화를 보낸다\", \"additionalInstruction\": \"재주껏 바꿔써라\", \"chargeDetail\": \"1\" }");
         inOrder.verify(stub).putStringState("paymentOrder2",
-                "{ \"swiftCode\": \"paymentOrder2\", \"date\": \"20210121\", \"amount\": \"100000\" , \"currency\": \"KRW\", \"ordererName\": \"테스트2\", \"ordererAddress\": \"미국어딘가\", \"ordererId\": \"orderer2\", \"receiverAccount\": \"101010101010\", \"receiverName\": \"receiver2\", \"receiverAddress\": \"한국어딘가\", \"remittanceInformation\": \"원화를 보낸다\", \"additionalInstruction\": \"편하지?\", \"chargeDetail\": \"2\" }");
+                "{ \"swiftCode\": \"paymentOrder2\", \"date\": \"20210121\", \"amount\": \"100000\", \"currency\": \"KRW\", \"ordererName\": \"테스트2\", \"ordererAddress\": \"미국어딘가\", \"ordererId\": \"orderer2\", \"receiverAccount\": \"101010101010\", \"receiverName\": \"receiver2\", \"receiverAddress\": \"한국어딘가\", \"remittanceInformation\": \"원화를 보낸다\", \"additionalInstruction\": \"편하지?\", \"chargeDetail\": \"2\" }");
     }
 
     @Nested
