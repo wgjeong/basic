@@ -50,7 +50,7 @@ public final class SwiftBc implements ContractInterface {
     public void InitLedger(final Context ctx) {
         ChaincodeStub stub = ctx.getStub();
 
-        CreatePaymentOrder(ctx, "paymentOrder1", "20210121", "70000" , "KRW", "테스트1", "서울어딘가", "orderer1", "010101010101", "receiver1", "미국어딘가", "원화를 보낸다", "재주껏 바꿔써라", "1");
+        CreatePaymentOrder(ctx, "paymentOrder1", "20210121", "70000", "KRW", "테스트1", "서울어딘가", "orderer1", "010101010101", "receiver1", "미국어딘가", "원화를 보낸다", "재주껏 바꿔써라", "1");
         CreatePaymentOrder(ctx, "paymentOrder2", "20210121", "100000", "KRW", "테스트2", "미국어딘가", "orderer2", "101010101010", "receiver2", "한국어딘가", "원화를 보낸다", "편하지?", "2");
     }
 
@@ -74,20 +74,7 @@ public final class SwiftBc implements ContractInterface {
      * @return the created paymentOrder
      */
     @Transaction(intent = Transaction.TYPE.SUBMIT)
-    public PaymentOrder CreatePaymentOrder( final Context ctx
-                                          , final String  swiftCode
-                                          , final String  date
-                                          , final String  amount
-                                          , final String  currency
-                                          , final String  ordererName
-                                          , final String  ordererAddress
-                                          , final String  ordererId
-                                          , final String  receiverAccount
-                                          , final String  receiverName
-                                          , final String  receiverAddress
-                                          , final String  remittanceInformation
-                                          , final String  additionalInstruction
-                                          , final String  chargeDetail ){
+    public PaymentOrder CreatePaymentOrder(final Context ctx, final String  swiftCode, final String  date, final String  amount, final String  currency, final String  ordererName, final String  ordererAddress, final String  ordererId, final String  receiverAccount, final String  receiverName, final String  receiverAddress, final String  remittanceInformation, final String  additionalInstruction, final String  chargeDetail) {
         ChaincodeStub stub = ctx.getStub();
 
         validationParam(swiftCode, date, amount, currency, ordererName, ordererAddress, ordererId, receiverAccount, receiverName, receiverAddress, remittanceInformation, chargeDetail);
@@ -105,24 +92,24 @@ public final class SwiftBc implements ContractInterface {
         return paymentOrder;
     }
 
-    private boolean validationParam( String swiftCode, String date, String amount, String currency, String ordererName, String ordererAddress, String ordererId, String receiverAccount, String receiverName, String receiverAddress, String remittanceInformation, String chargeDetail ){
-        isEmpty( "swiftCode"            , swiftCode             );
-        isEmpty( "date"                 , date                  );
-        isEmpty( "amount"               , amount                );
-        isEmpty( "currency"             , currency              );
-        isEmpty( "ordererName"          , ordererName           );
-        isEmpty( "ordererAddress"       , ordererAddress        );
-        isEmpty( "ordererId"            , ordererId             );
-        isEmpty( "receiverName"         , receiverName          );
-        isEmpty( "receiverAccount"      , receiverAccount       );
-        isEmpty( "receiverAddress"      , receiverAddress       );
-        isEmpty( "remittanceInformation", remittanceInformation );
-        isEmpty( "chargeDetail"         , chargeDetail          );
+    private boolean validationParam(final String swiftCode, final String date, final String amount, final String currency, final String ordererName, final String ordererAddress, final String ordererId, final String receiverAccount, final String receiverName, final String receiverAddress, final String remittanceInformation, final String chargeDetail) {
+        isEmpty("swiftCode", swiftCode);
+        isEmpty("date", date);
+        isEmpty("amount", amount);
+        isEmpty("currency", currency);
+        isEmpty("ordererName", ordererName);
+        isEmpty("ordererAddress", ordererAddress);
+        isEmpty("ordererId", ordererId);
+        isEmpty("receiverName", receiverName);
+        isEmpty("receiverAccount", receiverAccount);
+        isEmpty("receiverAddress", receiverAddress);
+        isEmpty("remittanceInformation", remittanceInformation);
+        isEmpty("chargeDetail", chargeDetail);
         return true;
     }
 
-    private void isEmpty( String paramName, String param ){
-        if( null == param || "".equals(param) || ("amount".equals(paramName) && "0".equals(param)) ){
+    private void isEmpty(final String paramName, final String param) {
+        if (null == param || "".equals(param) || ("amount".equals(paramName) && "0".equals(param))) {
             throw new ChaincodeException(paramName + " is empty", SwiftBcErrors.NOT_ENOUGH_PARAMETER.toString());
         }
     }
@@ -140,7 +127,7 @@ public final class SwiftBc implements ContractInterface {
         String assetJSON = stub.getStringState(swiftCode);
 
         if (assetJSON == null || assetJSON.isEmpty()) {
-            String errorMessage = "The Payment Order ("+swiftCode+") does not exist";
+            String errorMessage = "The Payment Order (" + swiftCode + ") does not exist";
             System.out.println(errorMessage);
             throw new ChaincodeException(errorMessage, SwiftBcErrors.PAYMENTORDER_NOT_FOUND.toString());
         }

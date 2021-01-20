@@ -41,19 +41,7 @@ public final class PaymentOrder {
     @Property()
     private String chargeDetail;            // 수수료 징수구분(부담자 구분)
 
-    public PaymentOrder( @JsonProperty("swiftCode") final String swiftCode
-            , @JsonProperty("date") final String date
-            , @JsonProperty("amount") final String amount
-            , @JsonProperty("currency") final String currency
-            , @JsonProperty("ordererName") final String ordererName
-            , @JsonProperty("ordererAddress") final String ordererAddress
-            , @JsonProperty("ordererId") final String ordererId
-            , @JsonProperty("receiverAccount") final String receiverAccount
-            , @JsonProperty("receiverName") final String receiverName
-            , @JsonProperty("receiverAddress") final String receiverAddress
-            , @JsonProperty("remittanceInformation") final String remittanceInformation
-            , @JsonProperty("additionalInstruction") final String additionalInstruction
-            , @JsonProperty("chargeDetail") final String chargeDetail ) {
+    public PaymentOrder(@JsonProperty("swiftCode") final String swiftCode, @JsonProperty("date") final String date, @JsonProperty("amount") final String amount, @JsonProperty("currency") final String currency, @JsonProperty("ordererName") final String ordererName, @JsonProperty("ordererAddress") final String ordererAddress, @JsonProperty("ordererId") final String ordererId, @JsonProperty("receiverAccount") final String receiverAccount, @JsonProperty("receiverName") final String receiverName, @JsonProperty("receiverAddress") final String receiverAddress, @JsonProperty("remittanceInformation") final String remittanceInformation, @JsonProperty("additionalInstruction") final String additionalInstruction, @JsonProperty("chargeDetail") final String chargeDetail) {
         this.swiftCode = swiftCode;
         this.date = date;
         this.amount = amount;
@@ -127,19 +115,7 @@ public final class PaymentOrder {
 
     @Override
     public int hashCode() {
-        return Objects.hash( getSwiftCode()
-                           , getDate()
-                           , getAmount()
-                           , getCurrency()
-                           , getOrdererName()
-                           , getOrdererAddress()
-                           , getOrdererId()
-                           , getReceiverAccount()
-                           , getReceiverName()
-                           , getReceiverAddress()
-                           , getRemittanceInformation()
-                           , getAdditionalInstruction()
-                           , getChargeDetail() );
+        return Objects.hash(getSwiftCode(), getDate(), getAmount(), getCurrency(), getOrdererName(), getOrdererAddress(), getOrdererId(), getReceiverAccount(), getReceiverName(), getReceiverAddress(), getRemittanceInformation(), getAdditionalInstruction(), getChargeDetail());
     }
 
     @Override

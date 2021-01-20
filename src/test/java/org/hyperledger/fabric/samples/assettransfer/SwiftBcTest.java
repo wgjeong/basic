@@ -110,7 +110,7 @@ public final class SwiftBcTest {
 
             PaymentOrder paymentOrder = contract.ReadPaymentOrder(ctx, "paymentOrder1");
 
-            assertThat(paymentOrder).isEqualTo(new PaymentOrder("paymentOrder1", "20210121", "70000" , "KRW", "테스트1", "서울어딘가", "orderer1", "010101010101", "receiver1", "미국어딘가", "원화를 보낸다", "재주껏 바꿔써라", "1"));
+            assertThat(paymentOrder).isEqualTo(new PaymentOrder("paymentOrder1", "20210121", "70000", "KRW", "테스트1", "서울어딘가", "orderer1", "010101010101", "receiver1", "미국어딘가", "원화를 보낸다", "재주껏 바꿔써라", "1"));
         }
 
         @Test
@@ -160,7 +160,7 @@ public final class SwiftBcTest {
                     .thenReturn("{ \"swiftCode\": \"paymentOrder1\", \"date\": \"20210121\", \"amount\": \"70000\" , \"currency\": \"KRW\", \"ordererName\": \"테스트1\", \"ordererAddress\": \"서울어딘가\", \"ordererId\": \"orderer1\", \"receiverAccount\": \"010101010101\", \"receiverName\": \"receiver1\", \"receiverAddress\": \"미국어딘가\", \"remittanceInformation\": \"원화를 보낸다\", \"additionalInstruction\": \"재주껏 바꿔써라\", \"chargeDetail\": \"1\" }");
 
             Throwable thrown = catchThrowable(() -> {
-                contract.CreatePaymentOrder( ctx, "paymentOrder1", "20210121", "70000" , "KRW", "테스트1", "서울어딘가", "orderer1", "010101010101", "receiver1", "미국어딘가", "원화를 보낸다", "재주껏 바꿔써라", "1");
+                contract.CreatePaymentOrder(ctx, "paymentOrder1", "20210121", "70000", "KRW", "테스트1", "서울어딘가", "orderer1", "010101010101", "receiver1", "미국어딘가", "원화를 보낸다", "재주껏 바꿔써라", "1");
             });
 
             assertThat(thrown).isInstanceOf(ChaincodeException.class).hasNoCause()
@@ -176,9 +176,9 @@ public final class SwiftBcTest {
             when(ctx.getStub()).thenReturn(stub);
             when(stub.getStringState("paymentOrder1")).thenReturn("");
 
-            PaymentOrder paymentOrder = contract.CreatePaymentOrder( ctx, "paymentOrder1", "20210121", "70000" , "KRW", "테스트1", "서울어딘가", "orderer1", "010101010101", "receiver1", "미국어딘가", "원화를 보낸다", "재주껏 바꿔써라", "1");
+            PaymentOrder paymentOrder = contract.CreatePaymentOrder(ctx, "paymentOrder1", "20210121", "70000", "KRW", "테스트1", "서울어딘가", "orderer1", "010101010101", "receiver1", "미국어딘가", "원화를 보낸다", "재주껏 바꿔써라", "1");
 
-            assertThat(paymentOrder).isEqualTo(new PaymentOrder("paymentOrder1", "20210121", "70000" , "KRW", "테스트1", "서울어딘가", "orderer1", "010101010101", "receiver1", "미국어딘가", "원화를 보낸다", "재주껏 바꿔써라", "1"));
+            assertThat(paymentOrder).isEqualTo(new PaymentOrder("paymentOrder1", "20210121", "70000", "KRW", "테스트1", "서울어딘가", "orderer1", "010101010101", "receiver1", "미국어딘가", "원화를 보낸다", "재주껏 바꿔써라", "1"));
         }
     }
 }
